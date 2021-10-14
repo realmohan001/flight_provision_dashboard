@@ -1,0 +1,21 @@
+.container-xl {
+    max-width: 90%;
+    background-color: white;
+  }
+
+.centerIt {
+  display: grid;
+  
+  margin-bottom: 10px;
+}
+
+.mat-card {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+
+.valid{
+  color: green;
+  font-weight: bold;
+}

@@ -1,0 +1,111 @@
+
+<div class="container-xl mat-elevation-z8">
+    <h1 class="mat-elevation-z8 rounded mb-0 page_header">{{title}}</h1>
+  
+    <div class="report_date_class table_header">
+      <mat-form-field class="search-form-field">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Ex.">
+      </mat-form-field>
+  
+      <div *ngIf="!backendService.loadedForSpinner">
+        <mat-spinner [diameter]="50" *ngIf="spinnerService.visibility | async"></mat-spinner>
+      </div>
+  </div>
+  
+  <div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" matSort>
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="flightnumber" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Flight Number</b> </th>
+      <td mat-cell *matCellDef="let element"> <b>{{element.flightnumber}} </b> </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="from">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> From </th>
+      <td mat-cell *matCellDef="let element"> {{element.from}} </td>
+    </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> To </th>
+        <td mat-cell *matCellDef="let element"> {{element.to}} </td>
+      </ng-container>
+
+        <!-- Symbol Column -->
+    <ng-container matColumnDef="water">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Water </th>
+      <td mat-cell *matCellDef="let element"> {{element.water}} </td>
+    </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="softdrinks">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Soft Drinks </th>
+        <td mat-cell *matCellDef="let element"> {{element.softdrinks}} </td>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="alcoholicdrinks">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcoholic Drinks </th>
+          <td mat-cell *matCellDef="let element"> {{element.alcoholicdrinks}} </td>
+        </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="snackpouches">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Snack Packs </th>
+            <td mat-cell *matCellDef="let element"> {{element.snackpouches}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="noofpassengers">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No of passengers </th>
+            <td mat-cell *matCellDef="let element"> {{element.noofpassengers}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="gate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Gate </th>
+            <td mat-cell *matCellDef="let element"> {{element.gate}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="flightstatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Flight Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.flightstatus}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="updatedatetime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated DateTime </th>
+            <td mat-cell *matCellDef="let element"> {{element.updatedatetime}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="savings">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> fuel Savings(%) </th>
+            <td mat-cell *matCellDef="let element" [ngClass]=calculateBackGroundClasses_percentSaved(element.savings)> <b>{{element.savings}}</b> </td>
+          </ng-container>
+      
+      
+    
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"  [ngClass]="{'mat-table-header-class': true}"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+<mat-paginator [pageSizeOptions]="[7,15, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+<br>
+<br>
+  
+  

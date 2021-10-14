@@ -1,0 +1,178 @@
+<div class="search-div container-xl margin_bottom_10px_class">
+    <h1 class="mat-elevation-z8 rounded mb-0 page_header">{{title}}</h1>
+    <mat-spinner [diameter]="50" *ngIf="!inFlightSearchResponse && spinnerService.visibility | async"  style="display: inline"></mat-spinner>
+    <div class="centerIt">
+
+        <mat-card class="margin_bottom_10px_class">
+            <form [formGroup]="inFlightInvokerForm" class="normal-form margin_bottom_10px_class" (ngSubmit)="onSubmit()">
+    
+              <div class="button-row">       
+                <mat-form-field appearance="outline" [style.width.px]=130>
+                    <mat-label>Flight Number</mat-label>
+                    <input formControlName="flightnumber" matInput placeholder="Flight Number">
+                    <mat-error *ngIf="inFlightInvokerForm.controls['flightnumber'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="inFlightInvokerForm.controls['flightnumber'].errors?.maxlength">
+                    Max length exceeded {{inFlightInvokerForm.get('flightnumber').errors.maxlength.requiredLength}} characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" [style.width.px]=130>
+                    <mat-label>From Airport</mat-label>
+                    <input formControlName="from" matInput placeholder="From Airport">
+                    <mat-error *ngIf="inFlightInvokerForm.controls['from'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="inFlightInvokerForm.controls['from'].errors?.maxlength">
+                    Max length exceeded {{inFlightInvokerForm.get('from').errors.maxlength.requiredLength}} characters.
+                    </mat-error>
+                </mat-form-field>
+          
+                <mat-form-field appearance="outline" [style.width.px]=130>
+                    <mat-label>To Airport</mat-label>
+                    <input formControlName="to" matInput placeholder="To Airport">
+                    <mat-error *ngIf="inFlightInvokerForm.controls['to'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="inFlightInvokerForm.controls['to'].errors?.maxlength">
+                    Max length exceeded {{inFlightInvokerForm.get('to').errors.maxlength.requiredLength}} characters.
+                    </mat-error>
+                </mat-form-field>
+              </div>
+           
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="inFlightInvokerForm.invalid">Run Predictive Analysis</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        </form>
+     </mat-card>
+
+    </div>
+
+
+    <div *ngIf="inFlightSearchResponse">
+      <mat-divider></mat-divider>
+       
+      <mat-card class="example-card scrollable-content margin_bottom_10px_class">
+        <form [formGroup]="inFlightRequestForm" class="normal-form margin_bottom_10px_class" (ngSubmit)="onSubmit_request_form()">
+    
+          <div class="button-row">     
+            
+            <p>
+            <mat-form-field appearance="outline" [style.width.px]=130>
+                <mat-label>Flight Number</mat-label>
+                <input formControlName="flightnumber" matInput placeholder="Flight Number">
+                <mat-error *ngIf="inFlightRequestForm.controls['flightnumber'].errors?.required">This field is mandatory.</mat-error>
+                <mat-error *ngIf="inFlightRequestForm.controls['flightnumber'].errors?.maxlength">
+                Max length exceeded {{inFlightRequestForm.get('flightnumber').errors.maxlength.requiredLength}} characters.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" [style.width.px]=130>
+              <mat-label>From Airport</mat-label>
+              <input formControlName="from" matInput placeholder="From Airport">
+              <mat-error *ngIf="inFlightRequestForm.controls['from'].errors?.required">This field is mandatory.</mat-error>
+              <mat-error *ngIf="inFlightRequestForm.controls['from'].errors?.maxlength">
+              Max length exceeded {{inFlightRequestForm.get('from').errors.maxlength.requiredLength}} characters.
+              </mat-error>
+            </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>To Airport</mat-label>
+            <input formControlName="to" matInput placeholder="To Airport">
+            <mat-error *ngIf="inFlightRequestForm.controls['to'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['to'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('to').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Gate</mat-label>
+            <input formControlName="gate" matInput placeholder="Gate">
+            <mat-error *ngIf="inFlightRequestForm.controls['gate'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['gate'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('gate').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>No of passengers</mat-label>
+            <input formControlName="noofpassengers" matInput placeholder="No of passengers">
+            <mat-error *ngIf="inFlightRequestForm.controls['noofpassengers'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['noofpassengers'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('noofpassengers').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Water</mat-label>
+            <input formControlName="water" matInput placeholder="Water">
+            <mat-error *ngIf="inFlightRequestForm.controls['water'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['water'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('water').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Soft Drinks</mat-label>
+            <input formControlName="softdrinks" matInput placeholder="Soft Drinks">
+            <mat-error *ngIf="inFlightRequestForm.controls['softdrinks'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['softdrinks'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('softdrinks').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Alcoholic Drinks</mat-label>
+            <input formControlName="alcoholicdrinks" matInput placeholder="Alcoholic Drinks">
+            <mat-error *ngIf="inFlightRequestForm.controls['alcoholicdrinks'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['alcoholicdrinks'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('alcoholicdrinks').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Snack Pouches</mat-label>
+            <input formControlName="snackpouches" matInput placeholder="Snack Pouches">
+            <mat-error *ngIf="inFlightRequestForm.controls['snackpouches'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="inFlightRequestForm.controls['snackpouches'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('snackpouches').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+        </p>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Status">
+              <mat-option></mat-option>
+              <ng-container *ngFor="let sts of status_array">
+                <mat-option value="{{sts}}">{{sts}}</mat-option>
+              </ng-container>
+            </mat-select>      
+            
+            <mat-error *ngIf="inFlightRequestForm.controls['status'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('status').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [style.width.px]=130>
+            <mat-label>Savings</mat-label>
+            <input formControlName="savings" matInput placeholder="Savings">
+            
+            <mat-error *ngIf="inFlightRequestForm.controls['savings'].errors?.maxlength">
+            Max length exceeded {{inFlightRequestForm.get('savings').errors.maxlength.requiredLength}} characters.
+            </mat-error>
+          </mat-form-field>
+          </div>
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" >Authorize</button>
+           
+          </div>
+
+         <span class="valid"> {{requestSubmitResponse}} </span>
+
+        </form>
+      </mat-card>
+     </div>
+</div>

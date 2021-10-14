@@ -1,0 +1,12 @@
+target/*
+/target/
+logs/*
+/logs/*
+/bin/*
+bin/*
+/.settings/*
+.settings/*
+/.mvn/*
+.mvn/*
+/node_modules/*
+node_modules/*

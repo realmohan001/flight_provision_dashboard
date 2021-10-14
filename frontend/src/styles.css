@@ -1,0 +1,130 @@
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.nav_menu_bg {
+  background-color:#304CB2;
+}
+
+.page_header{
+    text-align: left; 
+    background-color:#1f4287;
+    padding:5px 20px;
+    color: white;
+    /* font-weight: bold !important; */
+    text-underline-position: auto;
+    margin-top:1% !important;
+    margin-bottom:1% !important;
+  }
+
+  .mat-table-header-class {
+    background-color: #278ea5;   
+  }
+
+  .report_date_class {
+    color: #85203b;
+  }
+
+  .margin_bottom_1em_class {
+    margin-bottom: 1em;
+  }
+
+  .margin_bottom_5em_class {
+    margin-bottom: 5em;
+  }
+
+  .margin_top_1em_class {
+    margin-top: 1em;
+  }
+
+  .margin_top_5em_class {
+    margin-top: 5em;
+  }
+
+  .margin_bottom_10px_class {
+    margin-bottom: 10px;
+  }
+
+
+
+  /* table alternate for even rows */
+  .mat-row:nth-child(even){
+    background-color: #f1f0f0;
+    }
+
+
+    .bg-img
+{
+    background-image: url('/assets/webservices_bg.jpg');
+    background-position: center;
+    background-repeat: repeat;   
+}
+
+.cdk-overlay-pane.my-dialog {
+  position: relative!important;
+}
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}
+
+
+     /* filter value search */
+     .search-form-field {      
+      margin-left: 20px !important;
+      margin-right: 20px !important;
+      margin-bottom: 3px;
+      padding: 5px 10px;
+      background-color: #89abb1;
+      border-radius: 5px;
+      border-color: #89abb1;
+  }
+  .search-form-field div.mat-form-field-underline {
+      display: none !important;
+  }
+  .search-form-field div.mat-form-field-infix{
+      border-top: 0px !important;
+  }
+  .search-form-field div.mat-form-field-wrapper{
+      padding-bottom: 0px !important;
+  }
+  .search-form-field div.mat-form-field-suffix button{
+      height: 32px !important;
+      width: 32px !important;
+  }
+
+
+  /* Dialog button close */
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.btn-dialog-close{
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+}
+
+/* Dialog global heading */
+.dialog_pop_heading {
+  background-color:#1f4287;
+  color: White;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+
+.button-row button{
+  margin: 5px;
+}
+
+.button-row mat-form-field{
+  margin: 5px;
+}
